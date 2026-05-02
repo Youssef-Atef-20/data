@@ -59,61 +59,134 @@ $table = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
 <style>
+
+:root {
+    --primary: #0A192F;
+    --primary-light: #112240;
+    --secondary: #D4AF37;
+    --secondary-light: #F9E596;
+    --text-main: #CCD6F6;
+    --text-muted: #8892B0;
+    --bg-dark: #020c1b;
+    --white: #FFFFFF;
+    --glass-bg: rgba(10, 25, 47, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --transition: all 0.4s ease;
+}
+
+body {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--white);
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+h1::after {
+    content: "";
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--secondary),
+        transparent
+    );
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(17, 34, 64, 0.55);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+th {
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--secondary);
+    padding: 22px;
+    text-align: left;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+td {
+    padding: 20px 22px;
+    color: var(--text-main);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: var(--transition);
+    font-size: 0.96rem;
+}
+
+tr {
+    transition: var(--transition);
+}
+
+tr:hover {
+    background: rgba(212, 175, 55, 0.05);
+}
+
+tr:hover td {
+    color: var(--white);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+table::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: 20px;
+}
+
+@media (max-width: 1100px) {
+
+    body {
+        padding: 20px;
+    }
+
     table {
-        width: 100%;
-        border-collapse: collapse;
-        background: rgba(17, 34, 64, 0.6);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-        margin-top: 40px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
 
     h1 {
-        text-align: center;
-        margin-top: 40px;
-        color: var(--white);
-        font-size: 3rem;
-        font-family: var(--font-heading);
+        font-size: 2.2rem;
     }
 
-    th {
-        background: rgba(212, 175, 55, 0.15);
-        color: var(--secondary);
-        padding: 20px;
-        text-align: left;
-        font-size: 1rem;
-        letter-spacing: 1px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
+    th,
     td {
-        padding: 18px 20px;
-        color: var(--text-main);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        transition: 0.3s;
+        padding: 16px;
     }
+}
 
-    tr:hover td {
-        background: rgba(212, 175, 55, 0.06);
-        color: var(--white);
-    }
-
-    tr:last-child td {
-        border-bottom: none;
-    }
-
-    @media (max-width: 900px) {
-
-        table {
-            display: block;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-    }
 </style>
 
 <body>
