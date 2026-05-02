@@ -34,7 +34,6 @@ $result = mysqli_query($connection, $sql);
 $table = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
-print_r($table);
 
 
 ?>
