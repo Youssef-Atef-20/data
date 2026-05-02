@@ -25,6 +25,19 @@ if (!$connection) {
     echo "The Database Didn't Connect Successfully";
 }
 
+if (isset($_GET['delete'])) {
+
+    $id = $_GET['delete'];
+
+    $delete = "DELETE FROM bookings WHERE id = $id";
+
+    mysqli_query($connection, $delete);
+
+    header("Location: index.php");
+}
+
+
+
 $sql = "SELECT * FROM bookings";
 
 
@@ -75,6 +88,7 @@ $table = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <th>No. of Guests</th>
             <th>Check In Date</th>
             <th>Check Out Date</th>
+            <th>Delete The Data</th>
 
         </tr>
 
@@ -92,6 +106,11 @@ $table = mysqli_fetch_all($result, MYSQLI_ASSOC);
             echo "<td>{$row['guests']}</td>";
             echo "<td>{$row['check_in']}</td>";
             echo "<td>{$row['check_out']}</td>";
+            echo "<td>
+        <a href='?delete={$row['id']}' class='delete-btn'>
+            Delete
+        </a>
+      </td>";
 
 
             echo "</tr>";

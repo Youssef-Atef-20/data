@@ -124,3 +124,18 @@ table::before {
         padding: 16px;
     }
 }
+.delete-btn {
+    background: #dc2626;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.delete-btn:hover {
+    background: #b91c1c;
+    transform: scale(1.05);
+}
