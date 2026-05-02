@@ -142,6 +142,7 @@ $table = mysqli_fetch_all($result, MYSQLI_ASSOC);
             echo "<td>{$row['full_name']}</td>";
             echo "<td>{$row['email']}</td>";
             echo "<td>{$row['phone']}</td>";
+            echo "<td>{$row['guests']}</td>";
             echo "<td>{$hotel[$row['hotel_id']]}</td>";
             echo "<td>{$roomType[$row['room_id']]}</td>";
             echo "<td>{$row['check_in']}</td>";
